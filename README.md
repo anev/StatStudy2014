@@ -1,1 +1,1 @@
-УStudy project
+Study project
