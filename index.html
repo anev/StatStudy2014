@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta charset="UTF-8">
 <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" type="text/css"/> 
 <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
@@ -81,11 +82,14 @@
 			</nav>
 			<div class="jumbotron">
 				<h1>
-					Hello, world!
+					Hello!
 				</h1>
 				<p>
 					<a href="http://getbootstrap.com/components/">bootstrap</a>
 				</p>
+				<p><a href="http://api.jquery.com/">jQuery справочник</a></p>
+				<p><a href="http://anton.shevchuk.name/javascript/jquery-for-beginners-selectors/">css селекторы.</a></p>
+				
 				<p>
 					<a class="btn btn-primary btn-large" href="#">Learn more</a>
 				</p>
@@ -93,39 +97,44 @@
 		</div>
 	</div>
 	<div class="row clearfix">
-		<div class="col-md-4 column">
+	<div class="col-md-4 column">
 			<h2>
-				Heading
+				1. css selectors
 			</h2>
 			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+				По клику нужно вывести кол-во li-тегов документа.
 			</p>
 			<p>
-				<a class="btn" href="#">View details »</a>
+				<a id="step1" class="btn" href="#">Посчитать</a>
+			</p>
+		</div>
+
+		<div class="col-md-4 column">
+			<h2>
+				2. Дублирование элемента
+			</h2>
+			<p>
+				По клику на ссылку элемент должен копироваться, с помощью jquery.
+			</p>
+			<p id="copymeElement">
+				copy me!
+			</p>
+			<p>
+				<a id="step2" class="btn" href="#">copy!</a>
 			</p>
 		</div>
 		<div class="col-md-4 column">
 			<h2>
-				Heading
+				3. Сетевой запрос
 			</h2>
 			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+				по клику должен быть сделан сетевой запрос (см $.ajax или $.get), например на адрес http://account.bkfonbet.com/MobileServices/ping, ответ можно вывести в лог или на экран.
 			</p>
 			<p>
-				<a class="btn" href="#">View details »</a>
+				<a  id="step3" class="btn" href="#">сетевой запрос</a>
 			</p>
 		</div>
-		<div class="col-md-4 column">
-			<h2>
-				Heading
-			</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-			</p>
-			<p>
-				<a class="btn" href="#">View details »</a>
-			</p>
-		</div>
+		
 	</div>
 </div>	
 </body>
