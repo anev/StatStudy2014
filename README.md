@@ -1,1 +1,1 @@
-Study project
+qweStudy project
