@@ -11,7 +11,7 @@ $(document).ready(function(){
     }
 
     // При открытии страницы делаем запрос и строим табличку
-    drawTable(fillTable);
+    fillTable(fetchItems);
 
 
 
