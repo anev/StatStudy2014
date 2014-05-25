@@ -1,0 +1,19 @@
+{
+	"items":[
+		{
+			"user":"1",
+			"datetime":"2014-05-21 12:13:14",
+			"action":"login"
+		},
+		{
+			"user":"2",
+			"datetime":"2014-05-21 12:15:00",
+			"action":"login"
+		},
+		{
+			"user":"3",
+			"datetime":"2014-05-21 12:17:00",
+			"action":"logout"
+		}
+	]
+}
