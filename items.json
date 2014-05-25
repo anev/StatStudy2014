@@ -14,6 +14,13 @@
 			"user":"3",
 			"datetime":"2014-05-21 12:17:00",
 			"action":"logout"
-		}
+		},
+        {
+            "user":"4",
+            "datetime":"2015-10-21 00:23:24",
+            "action":"logout"
+
+        }
+
 	]
 }
