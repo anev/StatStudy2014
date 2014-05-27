@@ -98,8 +98,35 @@
 	</div>
 	<div class="row clearfix">
         <div>
-            <table class="table" id="items">
-            <tr><td> user </td><td>datetime </td><td> Action </td><tr>
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <label class="sr-only" for="filteruser">User</label>
+                    <input type="User" class="form-control" id="filteruser" placeholder="User">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="exampleInputPassword2">datebase</label>
+                    <input type="datebase" class="form-control" id="exampleInputPassword2" placeholder="datebase">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="exampleInputPassword2">Action</label></label>
+                    <input type="Action" class="form-control" id="exampleInputPassword2" placeholder="Action">
+
+</div>
+
+
+
+            </form>
+
+            <button type="button" class="btn btn-default btn-lg"  id = "filtersubmit" active="active">OK</button>
+            <table class="table">
+            <thead>
+            <tr>
+                <th> user </th>
+                <th>datetime</th>
+                <th> Action </th>
+            <tr>
+                </thead>
+                <tbody id="items"></tbody>
         </table>
             </div>
 	<div class="col-md-4 column">
@@ -142,7 +169,6 @@
 		</div>
 		
 	</div>
-
 </div>	
 </body>
 </html>

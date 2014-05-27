@@ -1,17 +1,22 @@
 $(document).ready(function(){
 
     var fetchAndDraw = function() {
+        $("#items").empty();
         $.getJSON('items.json', function (data) {
-            for (var i = 0; i < data.items.length; i++)
-           // if (data.items[i].user=3 )
-            {
-                $('#items').append('<tr> <td>' + data.items[i].user + '</td> <td>' + data.items[i].datetime +
-                    '</td> <td>' + data.items[i].action + '</td> <tr>');
+            var user = $("#filteruser").val();
+            for (var i = 0; i < data.items.length; i++) {
+                if (user.length ===0 || user === data.items[i].user) {
+                    $('#items').append('<tr> <td>' + data.items[i].user + '</td> <td>' + data.items[i].datetime +
+                        '</td> <td>' + data.items[i].action + '</td> <tr>');
+                }
+                else {console.log(data.items[i])}
             }
+
         });
     }
 
     fetchAndDraw();
+    $("#filtersubmit").click(fetchAndDraw);
 
     var fetchItems = function() {
       var items = [];
