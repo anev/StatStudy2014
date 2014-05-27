@@ -1,5 +1,18 @@
 $(document).ready(function(){
-	
+
+    var fetchAndDraw = function() {
+        $.getJSON('items.json', function (data) {
+            for (var i = 0; i < data.items.length; i++)
+           // if (data.items[i].user=3 )
+            {
+                $('#items').append('<tr> <td>' + data.items[i].user + '</td> <td>' + data.items[i].datetime +
+                    '</td> <td>' + data.items[i].action + '</td> <tr>');
+            }
+        });
+    }
+
+    fetchAndDraw();
+
     var fetchItems = function() {
       var items = [];
       // todo делаем запрос на сервер и возвращаем поле items
@@ -18,7 +31,7 @@ $(document).ready(function(){
     // OLD...
 
     $("#step1").click(function() {
-      alert('css селектор');
+      //alert('css селектор');
     });
 
 	$("#step2").click(function(){

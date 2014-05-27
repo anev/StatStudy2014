@@ -97,6 +97,11 @@
 		</div>
 	</div>
 	<div class="row clearfix">
+        <div>
+            <table class="table" id="items">
+            <tr><td> user </td><td>datetime </td><td> Action </td><tr>
+        </table>
+            </div>
 	<div class="col-md-4 column">
 			<h2>
 				1. css selectors
@@ -137,19 +142,7 @@
 		</div>
 		
 	</div>
-    <table id="items">
-        <tr><td> user </td><td>-- datetime </td><td> Action </td><tr>
-    </table>
-    <script type="text/javascript">
-        $(function(){
-            $.getJSON('items.json', function(data) {
-                for(var i=0;i<data.items.length;i++){
-                    $('#items').append('<tr> <td>' + data.items[i].user + '</td> <td>' + data.items[i].datetime +
-                            '</td> <td>' + data.items[i].action + '</td> <tr>');
-                }
-            });
-        });
-    </script>
+
 </div>	
 </body>
 </html>
