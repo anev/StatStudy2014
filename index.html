@@ -107,7 +107,11 @@
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="filterdatetime">datetime</label>
-                    <input type="datebase" class="form-control" id="filterdatetime" placeholder="datetime">
+                    <select class="form-control" id = "filterdatetime">
+                        <option value="5"> 5 мин </option>
+                        <option value="30"> 30 мин </option>
+                        <option value="1480"> one day </option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="filteraction">Action</label></label>
@@ -115,6 +119,8 @@
 
 
                     </select>
+
+
 
 </div>
 
@@ -134,7 +140,14 @@
                 <tbody id="items"></tbody>
         </table>
             </div>
-	<div class="col-md-4 column">
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary">
+                <input type="radio" name="options" id="option1">1
+            </label>
+
+        </div>
+
+        <div class="col-md-4 column">
 			<h2>
 				1. css selectors
 			</h2>
