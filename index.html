@@ -80,20 +80,6 @@
 				</div>
 				
 			</nav>
-			<div class="jumbotron">
-				<h1>
-					Hello!
-				</h1>
-				<p>
-					<a href="http://getbootstrap.com/components/">bootstrap</a>
-				</p>
-				<p><a href="http://api.jquery.com/">jQuery справочник</a></p>
-				<p><a href="http://anton.shevchuk.name/javascript/jquery-for-beginners-selectors/">css селекторы.</a></p>
-				
-				<p>
-					<a class="btn btn-primary btn-large" href="#">Learn more</a>
-				</p>
-			</div>
 		</div>
 	</div>
 	<div class="row clearfix">
@@ -102,91 +88,45 @@
                 <div class="form-group">
                     <label class="sr-only" for="filteruser">User</label>
                     <select class="form-control" id = "filteruser">
-
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="filterdatetime">datetime</label>
                     <select class="form-control" id = "filterdatetime">
+                        <option></option>
                         <option value="5"> 5 мин </option>
                         <option value="30"> 30 мин </option>
                         <option value="1480"> one day </option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="sr-only" for="filteraction">Action</label></label>
+                    <label class="sr-only" for="filteraction">Action</label>
                     <select class="form-control" id = "filteraction">
-
-
                     </select>
-
-
-
-</div>
-
-
-
+                </div>
             </form>
 
             <button type="button" class="btn btn-default btn-lg"  id = "filtersubmit" active="active">OK</button>
             <table class="table">
             <thead>
             <tr>
-                <th> user </th>
-                <th>datetime</th>
-                <th> Action </th>
+                <th>User</th>
+                <th>Date Time</th>
+                <th>Action</th>
             <tr>
                 </thead>
                 <tbody id="items"></tbody>
         </table>
             </div>
-        <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-primary">
-                <input type="radio" name="options" id="option1">1
-            </label>
+        <ul class="pagination" id ="page">
+            
+            
+        </ul>
 
-        </div>
 
-        <div class="col-md-4 column">
-			<h2>
-				1. css selectors
-			</h2>
-			<p>
-				По клику нужно вывести кол-во li-тегов документа.
-			</p>
 
-			<p>
-				<a id="step1" class="btn" href="#">Посчитать</a>
-			</p>
-		</div>
 
-		<div class="col-md-4 column">
-			<h2>
-				2. Дублирование элемента
-			</h2>
-			<p>
-				По клику на ссылку элемент должен копироваться, с помощью jquery.
-			</p>
-			<p id="copymeElement">
-				copy me!
-			</p>
-			<p>
-				<a id="step2" class="btn" href="#">copy!</a>
-			</p>
-		</div>
-		<div class="col-md-4 column">
-			<h2>
-				3. Сетевой запрос
-			</h2>
-			<p>
-				по клику должен быть сделан сетевой запрос (см $.ajax или $.get), например на адрес http://account.bkfonbet.com/MobileServices/ping, ответ можно вывести в лог или на экран.
-			</p>
-			<p>
-				<a  id="step3" class="btn" href="#">сетевой запрос</a>
-			</p>
-		</div>
-		
-	</div>
-</div>	
+
+    </div>
 </body>
 </html>
