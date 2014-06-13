@@ -9,45 +9,41 @@ $(document).ready(function () {
         console.log(itemDate)
         return twentyMinutesBefore < itemDate
     }
-
-    var fetchAndDraw = function (page) {
+    var init = function () {
         $("#items").empty();//очистка таблицы
-        $("#filteraction").append('<option></option>')//создание пустого поля
-        $("#filteruser").append('<option></option>')//создание пустого поля
-
-        var user = $("#filteruser").val();//задаем переменную, которая отвечает за  user .
-        var datetime = $("#filterdatetime").val();
-        var action = $("#filteraction").val();//задаем переменную, которая отвечает за  action.
-         console.log(page)
         $("#filteruser").empty();//очистка user
         $("#filteraction").empty();//очистка action
         $('#page').empty();
-        $.getJSON('items.json', function (data) {
-            var pagecount = data.items.length / itemOnPage;
-            pagecount = pagecount.toFixed();
+        $("#filteraction").append('<option></option>')//создание пустого поля
+        $("#filteruser").append('<option></option>')//создание пустого поля 
+    }
 
+
+    var fetchAndDraw = function (page) {
+
+        var user = $("#filteruser").val();//задаем переменную, которая отвечает за  user .
+        var datetime = $("#filterdatetime").val();
+        var action = $("#filteraction").val();//задаем переменную, которая отвечает за  action
+        var addPager = function (data) {
+
+            var pagecount = (data.items.length / itemOnPage).toFixed();
             for (var jj = 0; jj < pagecount; jj++) {
-                //var ifForHuman = i + 1
-                console.log("ii"+jj);
-
-                var a = $('<a href="#" id='+jj+'>' + jj + '<span class="sr-only">(current)</span></a>');
+                var a = $('<a href="#" id=' + jj + '>' + (jj + 1) + '<span class="sr-only">(current)</span></a>');
                 var li = $('<li></li>');
-                li.append(a)        ;
-
-                a.click(jj,    function(theValue){
+                li.append(a);
+                a.click(jj, function (theValue) {
                     fetchAndDraw(theValue.data);
-                })
+                });
                 if (jj === page) {
+
                     li.addClass("active");
+
                 }
                 $('#page').append(li);
-
             }
-
-
-            $("#filteraction").append('<option></option>')//создание пустого поля в action
-            $("#filteruser").append('<option></option>')//создание пустого поля в user
-
+        };
+        var fillcontrols = function (data) {
+            console.log("sss")
             for (var i = 0; i < data.items.length; i++) {
 
 
@@ -59,34 +55,36 @@ $(document).ready(function () {
                 if ($('#filteruser>:contains("' + data.items[i].user + '")').size() === 0) {
                     $("#filteruser").append('<option>' + data.items[i].user + '</option>')
                 }
-
             }
-            $("#filteruser").val(user);
-            $("#filteraction").val(action);
-
-
+        }
+        var filltables = function(data, user, action){
             for (var i = (page * itemOnPage); i < itemOnPage * page + itemOnPage; i++) {
 
 
-                if ((user.length === 0 || user === data.items[i].user) &&
+                if ((user == null || user.length === 0 || user === data.items[i].user) &&
                     isTimeOkey(datetime, data.items[i].datetime) &&
-                    (action.length === 0 || action === data.items[i].action)) {
+                    (action == null || action.length === 0 || action === data.items[i].action)) {
                     $('#items').append('<tr> <td>' + data.items[i].user + '</td> <td>' + data.items[i].datetime +
                         '</td> <td>' + data.items[i].action + '</td> <tr>');
-                }
-                else {
+                } else {
                     console.log(data.items[i])
                 }
             }
+        }
+        $.getJSON('items.json', function (data) {
+
+            init();
+            addPager(data);
+            fillcontrols(data);
+            $("#filteruser").val(user);
+            $("#filteraction").val(action);
+           filltables(data, user, action);
 
         });
     }
 
     fetchAndDraw(0);
     $("#filtersubmit").click(fetchAndDraw);//нажатие на кнопку.
-
     // При открытии страницы делаем запрос и строим табличку
-    fillTable(fetchItems);
-
-
+    //fillTable(fetchItems);
 });
