@@ -24,9 +24,11 @@ $(document).ready(function () {
         var user = $("#filteruser").val();//задаем переменную, которая отвечает за  user .
         var datetime = $("#filterdatetime").val();
         var action = $("#filteraction").val();//задаем переменную, которая отвечает за  action
+
         var addPager = function (data) {
 
-            var pagecount = (data.items.length / itemOnPage).toFixed();
+            var pagecount = (data.length / itemOnPage).toFixed();
+
             for (var jj = 0; jj < pagecount; jj++) {
                 var a = $('<a href="#" id=' + jj + '>' + (jj + 1) + '<span class="sr-only">(current)</span></a>');
                 var li = $('<li></li>');
@@ -43,7 +45,7 @@ $(document).ready(function () {
             }
         };
         var fillcontrols = function (data) {
-            console.log("sss")
+
             for (var i = 0; i < data.items.length; i++) {
 
 
@@ -57,34 +59,51 @@ $(document).ready(function () {
                 }
             }
         }
-        var filltables = function(data, user, action){
-            for (var i = (page * itemOnPage); i < itemOnPage * page + itemOnPage; i++) {
+        var filterdata = function(data, user, action) {
+            var rizalt = [];
 
+            for (var i = 0; i < data.items.length; i++) {
 
                 if ((user == null || user.length === 0 || user === data.items[i].user) &&
                     isTimeOkey(datetime, data.items[i].datetime) &&
                     (action == null || action.length === 0 || action === data.items[i].action)) {
-                    $('#items').append('<tr> <td>' + data.items[i].user + '</td> <td>' + data.items[i].datetime +
-                        '</td> <td>' + data.items[i].action + '</td> <tr>');
+                    rizalt.push(data.items[i])}
+            }
+            return rizalt;
+        }
+
+        var filltables = function(data, user, action){
+          var filtered = filterdata(data, user, action);
+            console.log(filtered)
+            addPager(filtered);
+            for (var i = (page * itemOnPage); i < itemOnPage * page + itemOnPage; i++) {
+
+
+                if ((user == null || user.length === 0 || user === filtered[i].user) &&
+                    isTimeOkey(datetime, filtered[i].datetime) &&
+                    (action == null || action.length === 0 || action === filtered[i].action)) {
+                    $('#items').append('<tr> <td>' + filtered[i].user + '</td> <td>' + filtered[i].datetime +
+                        '</td> <td>' + filtered[i].action + '</td> <tr>');
                 } else {
-                    console.log(data.items[i])
+
                 }
             }
         }
         $.getJSON('items.json', function (data) {
-
             init();
-            addPager(data);
+
             fillcontrols(data);
             $("#filteruser").val(user);
             $("#filteraction").val(action);
-           filltables(data, user, action);
+           filltables (data, user, action);
 
         });
     }
 
     fetchAndDraw(0);
-    $("#filtersubmit").click(fetchAndDraw);//нажатие на кнопку.
+    $("#filtersubmit").click(function (){
+        fetchAndDraw(0)
+    });//нажатие на кнопку.
     // При открытии страницы делаем запрос и строим табличку
     //fillTable(fetchItems);
 });
